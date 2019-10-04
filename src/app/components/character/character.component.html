@@ -1,0 +1,15 @@
+<div class="card text-center">
+    <div class="card-header">
+        {{ character.name | uppercase }}
+    </div>
+    <div class="card-body">
+        <img
+            [src]="character.image"
+            [alt]="character.name"
+            class="img-fluid"
+        />
+    </div>
+    <div class="card-footer">
+        {{ character.gender }} | {{ character.species }} | {{ character.status }}
+    </div>
+</div>
