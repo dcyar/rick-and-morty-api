@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CharactersService } from 'src/app/services/characters/characters.service';
-import { Character } from 'src/app/models/character.model';
 
 @Component({
     selector: 'app-characters',
@@ -8,15 +7,15 @@ import { Character } from 'src/app/models/character.model';
     styleUrls: ['./characters.component.styl']
 })
 export class CharactersComponent implements OnInit {
-    characters: Character[];
+    characters: any[] = [];
 
     // tslint:disable-next-line: variable-name
-    constructor(private _charactersService: CharactersService) { }
+    constructor(private _charactersService: CharactersService) {
+        this._charactersService.getCharacters().subscribe((data: any) => {
+            this.characters = data.results;
+        });
+    }
 
     ngOnInit() {
-        return this._charactersService.getCharacters().subscribe(data => {
-            // tslint:disable-next-line: no-string-literal
-            this.characters = data['results'];
-        });
     }
 }

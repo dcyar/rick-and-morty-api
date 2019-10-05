@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Character } from 'src/app/models/character.model';
 
 @Injectable({
     providedIn: 'root'
@@ -14,6 +13,6 @@ export class CharactersService {
     }
 
     getCharacters() {
-        return this._http.get<Character[]>(this.apiUrl);
+        return this._http.get(this.apiUrl);
     }
 }
